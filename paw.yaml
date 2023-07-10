@@ -1,0 +1,55 @@
+# 2023/07 AMV
+#
+# Gay Paw Sign Driver
+#
+# Wiring:
+# GPIO13    Output
+
+esphome:
+  name: paw-sign
+  platform: ESP32
+  board: nodemcu-32s
+
+wifi:
+  ssid: !secret ssid  
+  password: !secret wappw
+  ap:
+    ssid: paw-fallback-hotspot
+    password: !secret hotspotpw  
+
+captive_portal:
+
+api:
+  password: !secret apipw
+
+logger:
+  
+ota:
+  password: !secret apipw
+
+status_led:
+  pin:
+    inverted: False
+    number: GPIO2
+
+binary_sensor:
+  - platform: status
+    name: "Paw Sign Status"
+    
+sensor:
+  - platform: wifi_signal
+    name: "Paw Sign WiFi Signal"
+    update_interval: 60s
+
+output:
+  - platform: ledc
+    pin: GPIO13
+    id: led_output
+
+light:
+  - platform: monochromatic
+    name: "Paw Sign"
+    id: paw_sign
+    icon: "mdi:paw"
+    output: led_output
+
