@@ -11,6 +11,7 @@ Single channel PWD LED driver for ESPHome and HomeAssistant
 ## Hardware
 
 Input/Output: 12VDC
+
 Target platform: ESP32
 
 Pin Mapping:
