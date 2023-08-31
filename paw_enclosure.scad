@@ -1,4 +1,4 @@
-include </home/growlph/3D Printer Models/OpenSCAD Projects/pcb_standoff.scad>
+include <pcb_standoff.scad>
 
 x=0; y=1; z=2;
 
